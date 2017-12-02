@@ -9,7 +9,7 @@ public class PythonRun {
     private static final String CODE_PATH = PYTHON_PATH + "main.py";
     private static final String DFOLDER_PATH = "--dfolder " + PYTHON_PATH + "data";
 
-    public static void runVisualiser(PythonArguments args) throws IOException{ // Will add datatype of some sort
+    public static void runVisualiser(PythonArguments args) throws IOException{
         String command = "python2 " + CODE_PATH + " " + DFOLDER_PATH + " " + args.toArgs();
         System.out.println(command);
         Process p = Runtime.getRuntime().exec(command);

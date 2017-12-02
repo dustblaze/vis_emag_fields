@@ -40,12 +40,21 @@ public class PythonArguments {
     }
 
     public String toArgs() {
-        String gridString = "--grid ";
-        for (double gn : grid) {
-            gridString += gn + " ";
+        String gridString = "--grid '";
+        for (int i = 0; i < 9; i ++) {
+            if (i != 0) {
+                gridString += " ";
+            }
+            gridString += grid[i];
         }
+        gridString += "'";
+
+        // Currently remove gridString
+        gridString = "";
+        // ---
+
         String lineString = "--lines " + lines + " ";
-        String fileString = "--file " + file;
-        return graphType.toArg() + lineString + fileString;
+        String fileString = "--file " + file + " ";
+        return graphType.toArg() + lineString + fileString + gridString;
     }
 }

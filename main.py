@@ -37,7 +37,6 @@ if options.file:
 
 # Setting folder path
 if options.dfolder: # Check for folder specification
-    print(options.dfolder)
     dfolder = options.dfolder + '/'
 else:
     dfolder = 'data/'
