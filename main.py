@@ -9,6 +9,8 @@ parser = OptionParser()
 
 # change files
 parser.add_option('-f', '--file', type = 'string', dest = 'file', help = 'Reads in the given file.')
+# change data folder location
+parser.add_option('--dfolder', type = 'string', dest = 'dfolder', help = 'Location of data folder.')
 # draw different graphs
 parser.add_option('--e_vector', action = 'store_true', dest = 'e_vector', help = 'Draw electric vector field.')
 parser.add_option('--e_field', action = 'store_true', dest = 'e_field', help = 'Draw electric field.')
@@ -33,11 +35,18 @@ elif options.m_vector or options.m_field:
 if options.file:
     name = options.file
 
+# Setting folder path
+if options.dfolder: # Check for folder specification
+    print(options.dfolder)
+    dfolder = options.dfolder + '/'
+else:
+    dfolder = 'data/'
+
 # read in csv file where the charges/wires should be defined
 if options.e_vector or options.e_field:
     charge = []
     pos = []
-    with open('data/' + name + '.csv') as f:
+    with open(dfolder + name + '.csv') as f:
         reader = csv.reader(f, delimiter=',')
         next(reader)
         for row in reader:
@@ -47,7 +56,7 @@ elif options.m_vector or options.m_field:
     currents = []
     orientations = []
     pos= []
-    with open('data/' + name + '.csv') as f:
+    with open(dfolder + name + '.csv') as f:
         reader = csv.reader(f, delimiter = ',')
         next(reader)
         for row in reader:
